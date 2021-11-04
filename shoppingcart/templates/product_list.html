@@ -1,0 +1,35 @@
+{% extends 'product_reg.html' %}
+{% block content %}
+<div class="row">
+    <button ><a href="{% url 'product_reg' %}">Add Product</a></button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Slno</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Quantity</th>
+            <th>Product Image</th>
+            <th>Status</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in product %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{p.product_name}}</td>
+            <td>{{p.product_quantity}}</td>
+            <td>{{p.product_price}}</td>
+            <td><img src="{{p.product_image.url}}" style="width:50px;height:50px;"></td>
+            <td>{{p.product_status}}</td>
+            <td><button><a href="{% url 'product_delete' pid=p.id %}">Delete</a></button></td>
+            <td><button><a href="{% url 'product_reg' pid=p.id %}">Edit</a></button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+{% endblock %}
