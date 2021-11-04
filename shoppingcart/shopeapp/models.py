@@ -9,5 +9,5 @@ class Product(models.Model):
     product_image=models.ImageField(upload_to='images/')
     product_status=models.CharField(max_length=50)
 class Cart(models.Model):
-    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    product_id=models.ForeignKey(Product,on_delete=models.CASCADE,default=True)
     

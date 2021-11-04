@@ -11,41 +11,35 @@
     <title>Hello, world!</title>
   </head>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">WELCOME</a>
-    {{message}}
+    <a class="navbar-brand" href="{% url 'home' %}">WELCOME</a>
+    
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-     <label><a href="{% url 'cart_list' %}">Cart({{datacount}})</a></label>
+     <!-- <label><a href="{% url 'cart_list' %}">Cart({{datacount}})</a></label> -->
      
     </div>
   </nav>
   <body>
       
-    <div class="card-group">
-        {% for p in product %}
-        <div class="card" style="width:50px;height:50px">
-          <img src="{{p.product_image.url}}" class="card-img-top" alt="..." >
-          <div class="card-body">
-            <input type="hidden" name="ppname" id="ppname" value="{{p.product_name}}">
-              <input type="hidden" name="pprice" id="pprice" value="{{p.product_price}}">
-              <input type="hidden" name="pquantity" id="pquantity" value="{{p.product_quantity}}">
-              <input type="hidden" name="pid" id="pid" value="{{p.id}}">
-            <h5 class="card-title">{{p.product_name}}</h5>
-            <h5>PRICE :{{p.product_price}}</h5>
-            <h5><input type="number" class="form-control" value={{p.product_quantity}}></h5>
-            <h5>{{p.product_status}}</h5>
-            <form action="{% url 'cart' %}" method="POST">
-                {% csrf_token %}
-            <input type="hidden" name="pid" id="pid" value="{{p.id}}">
-            <input type="hidden" name="pprice" id="pprice" value="{{p.product_price}}">
-            <input type="hidden" name="pquantity" id="pquantity" value="{{p.product_quantity}}">
-            <button type="submit"  style="color:green">ADD TO CART</button>
-          </form>
-          </div>
-        </div>
-        {% endfor %}
-        </div>
-      </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>product name</th>
+                <th>quantity </th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in data %}
+            <tr>
+                <td>{{c.product_id.product_name}}</td>
+                <td>{{c.product_id.product_quantity}}</td>
+                <td>{{c.product_id.product_price}}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
