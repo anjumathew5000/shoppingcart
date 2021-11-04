@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row" style="margin-top: 100px;">
+                
+          
+        <form action="{% url 'userlogin' %}" method="POST">
+            {% csrf_token %}
+            {{message}}
+            <div class="form-group">
+                <h1>Login</h1>
+                </div>
+            
+            <div class="form-group">
+            
+                <input type="email" name="email" class="form-control" placeholder="Email"  >
+                </div>
+            <div class="form-group">
+            
+            <input type="password" name="password" class="form-control" placeholder="Password"  >
+            </div>
+            <button type="submit" >SIGNIN</button>
+             
+          
+
+        </form>
+    </div>
+</div>
+    </body>
+</html>

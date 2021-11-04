@@ -44,6 +44,8 @@ def ProductEdit(request,pid):
         product_quantity=request.POST.get('pquantity')
         try:
             product_image=request.FILES['pimage']
+            
+
         except Exception:
             product_image=Product.objects.get(id=pid).product_image
         product_status=request.POST.get('pstatus')
